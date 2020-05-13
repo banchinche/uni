@@ -198,17 +198,17 @@ Group & Groups::operator[](int number) const
 
 void Groups::sortGroups()
 {
-	for (int i = 0; i < groupsSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+	for (int i = 0; i < groupsSize - 1; i++) // Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã±Ã®Ã°Ã²Ã¨Ã°Ã®Ã¢ÃªÃ¨ Ã¯Ã® Ã Ã«Ã´Ã Ã¢Ã¨Ã²Ã³(Ã¯Ã³Ã§Ã»Ã°Ã¼ÃªÃ®Ã¢Ã»Ã© Ã¬Ã¥Ã²Ã®Ã¤)
 	{
 		for (int j = 0; j < groupsSize - i - 1; j++)
 		{
-			if (groups[j].get().compare(groups[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+			if (groups[j].get().compare(groups[j + 1].get()) > 0) // compare - Ã±Ã°Ã Ã¢Ã­Ã¨Ã¢Ã Ã¥Ã² Ã«Ã¥ÃªÃ±Ã¨ÃªÃ®Ã£Ã°Ã Ã´Ã¨Ã·Ã¥Ã±ÃªÃ¨ Ã±Ã²Ã°Ã®ÃªÃ¨
 				std::swap(groups[j], groups[j + 1]);
 		}
 	}
 
 }
-int Groups::getGroupsSize()
+int Groups::getGroupsSize() const
 {
 	return groupsSize;
 }
@@ -259,7 +259,7 @@ Audience & Audiences::operator[](const int number) const
 	return audiences[number];
 }
 
-int Audiences::getAudiencesSize()
+int Audiences::getAudiencesSize() const
 {
 	return audiencesSize;
 }
@@ -314,17 +314,17 @@ Subject & Subjects::operator[](const int number) const
 
 void Subjects::sortSubjects()
 {
-	for (int i = 0; i < subjectsSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+	for (int i = 0; i < subjectsSize - 1; i++) // Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã±Ã®Ã°Ã²Ã¨Ã°Ã®Ã¢ÃªÃ¨ Ã¯Ã® Ã Ã«Ã´Ã Ã¢Ã¨Ã²Ã³(Ã¯Ã³Ã§Ã»Ã°Ã¼ÃªÃ®Ã¢Ã»Ã© Ã¬Ã¥Ã²Ã®Ã¤)
 	{
 		for (int j = 0; j < subjectsSize - i - 1; j++)
 		{
-			if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+			if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - Ã±Ã°Ã Ã¢Ã­Ã¨Ã¢Ã Ã¥Ã² Ã«Ã¥ÃªÃ±Ã¨ÃªÃ®Ã£Ã°Ã Ã´Ã¨Ã·Ã¥Ã±ÃªÃ¨ Ã±Ã²Ã°Ã®ÃªÃ¨
 				std::swap(subjects[j], subjects[j + 1]);
 		}
 	}
 }
 
-int Subjects::getSubjectsSize()
+int Subjects::getSubjectsSize() const
 {
 	return subjectsSize;
 }
@@ -403,17 +403,17 @@ void Specialities::outSpecialities(std::ofstream & fout)
 
 void Specialities::sortSpecialities()
 {
-	for (int i = 0; i < specialitiesSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+	for (int i = 0; i < specialitiesSize - 1; i++) // Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã±Ã®Ã°Ã²Ã¨Ã°Ã®Ã¢ÃªÃ¨ Ã¯Ã® Ã Ã«Ã´Ã Ã¢Ã¨Ã²Ã³(Ã¯Ã³Ã§Ã»Ã°Ã¼ÃªÃ®Ã¢Ã»Ã© Ã¬Ã¥Ã²Ã®Ã¤)
 	{
 		for (int j = 0; j < specialitiesSize - i - 1; j++)
 		{
-			if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+			if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - Ã±Ã°Ã Ã¢Ã­Ã¨Ã¢Ã Ã¥Ã² Ã«Ã¥ÃªÃ±Ã¨ÃªÃ®Ã£Ã°Ã Ã´Ã¨Ã·Ã¥Ã±ÃªÃ¨ Ã±Ã²Ã°Ã®ÃªÃ¨
 				std::swap(specialities[j], specialities[j + 1]);
 		}
 	}
 }
 
-int Specialities::getSpecialitiesSize()
+int Specialities::getSpecialitiesSize() const
 {
 	return specialitiesSize;
 }
