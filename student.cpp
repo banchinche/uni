@@ -1,4 +1,4 @@
-﻿#include "student.hpp"
+#include "student.hpp"
 Student::Student(){}
 Student::~Student(){}
 
@@ -47,20 +47,37 @@ void Student::showAudiences() const{
 }
 void Student::sortSubjects()
 {
-	for (int i = 0; i < subjects.getSubjectsSize()- 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
-	{
-		for (int j = 0; j < subjects.getSubjectsSize() - i - 1; j++)
-		{
-			if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
-				std::swap(subjects[j], subjects[j + 1]);
-		}
-	}
+    for (int i = 0; i < subjects.getSubjectsSize()- 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    {
+        for (int j = 0; j < subjects.getSubjectsSize() - i - 1; j++)
+        {
+            if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+                std::swap(subjects[j], subjects[j + 1]);
+        }
+    }
 }
 void Student::set(){
-    std::cout << "Enter student's name: ";
-    std::cin >> studentName;
-    std::cout << "Enter student's surname: ";
-    std::cin >> studentSurname;
+    std::string varuable;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter student's name: ";
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->studentName = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
+    flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter student's surname: ";
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->studentSurname = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
     std::cin >> studentGroup;
     std::cin >> studentSpeciality;
     subjects.setSubjects();
@@ -78,8 +95,17 @@ void Student::set(std::string filename){
     in.close();
 }
 void Student::setName(){
-    std::cout << "Enter student's name: ";
-    std::cin >> studentName;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter student's name: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->studentName = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
 }
 void Student::setName(std::string filename){
     std::ifstream in;
@@ -88,8 +114,17 @@ void Student::setName(std::string filename){
     in.close();
 }
 void Student::setSurname(){
-    std::cout << "Enter student's surname: ";
-    std::cin >> studentSurname;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter student's surname: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->studentSurname = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
 }
 void Student::setSurname(std::string filename){
     std::ifstream in;
@@ -179,14 +214,25 @@ void Students::outStudents(std::string filename) const{
         students[i].show(filename);
 }
 void Students::sortStudentsSubjects(){
-	for (int i = 0; i < studentsSize; i++)
-		students[i].sortSubjects();
+    for (int i = 0; i < studentsSize; i++)
+        students[i].sortSubjects();
 }
 int Students::getStudentsSize() const
 {
     return studentsSize;
 }
 void Students::setStudentsSize(){
-    std::cout << "Enter a number of students: ";
-    std::cin >> studentsSize;
+    int size;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter a number of students: ";
+            std::cin >> size;
+            if(size > 10)throw TooMuchDimension();
+            else this->studentsSize = size;
+        }
+        catch(TooMuchDimension){
+            std::cerr << "Too much dimension.\n";
+        }
+    }
 }
