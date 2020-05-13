@@ -14,6 +14,7 @@ public:
     Teacher();
     ~Teacher();
     void show() const;
+    void show(std::string filename) const;
     void showName() const;
     void showPatronymic() const;
     void showSurname() const;
@@ -41,3 +42,22 @@ public:
 
 };
 
+
+class Teachers {
+private:
+    Teacher *teachers = nullptr;
+    int teachersSize;
+public:
+    Teachers();
+    Teachers(const int size);
+    ~Teachers();
+    void showTeachers();
+    Teacher& operator [] (const int number) const;
+    void setTeachers();
+    void setTeachers(std::string filename);
+    void outTeachers() const;
+    void outTeachers(std::string filename)const;
+    void sortTeachers();
+    int getTeachersSize() const;
+    void setTeachersSize();
+};
