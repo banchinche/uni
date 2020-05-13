@@ -102,13 +102,13 @@ public:
 	void showAudiences();
 	Audience& operator [] (const int number) const;
 	int getAudiencesSize();
-private:
-	Audience *audiences;
-	int audiencesSize;
 	void setAudiences();
 	void setAudiences(std::ifstream & fin);
 	void outAudiences();
 	void outAudiences(std::ofstream & fout);
+private:
+	Audience *audiences;
+	int audiencesSize;
 };
 #pragma endregion
 #pragma region Subjects
