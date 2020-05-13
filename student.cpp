@@ -12,6 +12,17 @@ void Student::show() const{
         std::cout << audiences[i] << " ";
     }
 }
+void Student::show(std::string filename) const{
+    std::ofstream out;
+    out.open(filename);
+    out << studentName;
+    out << studentSurname;
+    out << studentGroup;
+    out << studentSpeciality;
+    subjects.outSubjects(out);
+    audiences.outAudiences(out);
+    out.close();
+}
 void Student::showName() const{
     std::cout << studentName << std::endl;
 }
@@ -110,4 +121,58 @@ void Student::setAudiences(std::string filename){
     in.open(filename);
     audiences.setAudiences(in);
     in.close();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Students::Students(){}
+Students::Students(const int size){
+    this->studentsSize = size;
+    students = new Student[studentsSize];
+}
+Students::~Students()
+{
+    delete[] students;
+}
+void Students::showStudents(){
+    for (int i = 0; i < studentsSize; i++)
+        students[i].show();
+}
+Student & Students::operator[](const int number) const{
+    return students[number];
+}
+void Students::setStudents(){
+    for (int i = 0; i < studentsSize; i++)
+        students[i].set();
+}
+void Students::setStudents(std::string filename){
+    for (int i = 0; i < studentsSize; i++)
+        students[i].set(filename);
+}
+void Students::outStudents() const{
+    for (int i = 0; i < studentsSize; i++)
+        students[i].show();
+}
+void Students::outStudents(std::string filename) const{
+    for (int i = 0; i < studentsSize; i++)
+        students[i].show(filename);
+}
+void Students::sortStudents(){}
+int Students::getStudentsSize() const
+{
+    return studentsSize;
+}
+void Students::setStudentsSize(){
+    std::cout << "Enter a number of students: ";
+    std::cin >> studentsSize;
 }
