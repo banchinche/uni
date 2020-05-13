@@ -1,4 +1,4 @@
-﻿#include "teacher.hpp"
+#include "teacher.hpp"
 Teacher::Teacher() {}
 Teacher::~Teacher() {}
 
@@ -55,22 +55,50 @@ void Teacher::showGroups() const{
 }
 void Teacher::sortSpecialities()
 {
-	for (int i = 0; i < specialities.getSpecialitiesSize() - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
-	{
-		for (int j = 0; j < specialities.getSpecialitiesSize() - i - 1; j++)
-		{
-			if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
-				std::swap(specialities[j], specialities[j + 1]);
-		}
-	}
+    for (int i = 0; i < specialities.getSpecialitiesSize() - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    {
+        for (int j = 0; j < specialities.getSpecialitiesSize() - i - 1; j++)
+        {
+            if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+                std::swap(specialities[j], specialities[j + 1]);
+        }
+    }
 }
 void Teacher::set(){
-    std::cout << "Enter teacher's name: ";
-    std::cin >> teacherName;
-    std::cout << "Enter a teacher's patronymic: ";
-    std::cin >> teacherPatronymic;
-    std::cout << "Enter a teacher's surname: ";
-    std::cin >> teacherSurname;
+    std::string varuable;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's name: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherName = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
+    flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's patronymic: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherPatronymic = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
+    flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's surname: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherSurname = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
     std::cin >> teacherSubject;
    this->specialities.setSpecialities();
     audiences.setAudiences();
@@ -90,8 +118,18 @@ void Teacher::set(std::string filename){
     in.close();
 }
 void Teacher::setName(){
-    std::cout << "Enter teacher's name: ";
-    std::cin >> teacherName;
+    std::string varuable;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's name: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherName = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
 }
 void Teacher::setName(std::string filename){
     std::ifstream in;
@@ -100,8 +138,18 @@ void Teacher::setName(std::string filename){
     in.close();
 }
 void Teacher::setPatronymic(){
-    std::cout << "Enter a teacher's patronymic: ";
-    std::cin >> teacherPatronymic;
+    std::string varuable;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's patronymic: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherPatronymic = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
 }
 void Teacher::setPatronymic(std::string filename){
     std::ifstream in;
@@ -110,8 +158,18 @@ void Teacher::setPatronymic(std::string filename){
     in.close();
 }
 void Teacher::setSurname(){
-    std::cout << "Enter a teacher's surname: ";
-    std::cin >> teacherSurname;
+    std::string varuable;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter teacher's surname: ";
+            std::string varuable;
+            getline(std::cin,varuable);
+            if(varuable.length() > 50) throw TooMuchSymbols();
+            else { this->teacherSurname = varuable; flag = 0;}
+        }
+        catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
+    }
 }
 void Teacher::setSurname(std::string filename){
     std::ifstream in;
@@ -201,14 +259,25 @@ void Teachers::outTeachers(std::string filename) const{
 }
 void Teachers::sortTeachersSpecialities()
 {
-	for (int i = 0; i < teachersSize; i++)
-		teachers[i].sortSpecialities();
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].sortSpecialities();
 }
 int Teachers::getTeachersSize() const
 {
     return teachersSize;
 }
 void Teachers::setTeachersSize(){
-    std::cout << "Enter a number of teachers: ";
-    std::cin >> teachersSize;
+    int size;
+    bool flag = 1;
+    while(flag){
+        try{
+            std::cout << "Enter a number of teachers: ";
+            std::cin >> size;
+            if(size > 10)throw TooMuchDimension();
+            else this->teachersSize = size;
+        }
+        catch(TooMuchDimension){
+            std::cerr << "Too much dimension.\n";
+        }
+    }
 }
