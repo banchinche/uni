@@ -19,7 +19,7 @@ public:
     void showSpeciality() const;
     void showSubjects() const;
     void showAudiences() const;
-
+	void sortSubjects();
     void set();
     void set(std::string filename);
     void setName();
@@ -52,7 +52,7 @@ public:
     void setStudents(std::string filename);
     void outStudents() const;
     void outStudents(std::string filename) const;
-    void sortStudents();
+    void sortStudentsSubjects();
     int getStudentsSize() const;
     void setStudentsSize();
 };

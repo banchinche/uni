@@ -22,7 +22,7 @@ public:
     void showSpecialities() const;
     void showAudiences() const;
     void showGroups() const;
-
+	void sortSpecialities();
     void set();
     void set(std::string filename);
     void setName();
@@ -57,7 +57,7 @@ public:
     void setTeachers(std::string filename);
     void outTeachers() const;
     void outTeachers(std::string filename)const;
-    void sortTeachers();
+    void sortTeachersSpecialities();
     int getTeachersSize() const;
     void setTeachersSize();
 };

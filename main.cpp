@@ -1,4 +1,6 @@
 #include "stuff.hpp"
+#include "teacher.hpp"
+#include "student.hpp"
 class WrongChoice : std::exception {};
 uint64 menuStudent();
 uint64 menuTeacher();
@@ -28,33 +30,27 @@ int main(int argc, const char * argv[]) {
 			std::cin >> quantity;
 			std::cin.ignore();
 			system("cls");
-			//Teachers teachers(quantity);
+			Teachers teachers(quantity);
 			while (marker2) {
 				switch (menuTeacher()) {
 				case 1:
-					//zxc
+					teachers.setTeachers();
 					system("cls");
 					break;
 				case 2:
-					//zxc
+					teachers.setTeachers("input.txt");
+					system("cls");
 					break;
 				case 3:
-					//zxc
+					system("cls");
+					teachers.showTeachers();
 					break;
 				case 4:
-					//zxc
+					teachers.outTeachers("output.txt");
+					system("cls");
 					break;
 				case 5:
-					//zxc
-					break;
-				case 6:
-					//zxc
-					break;
-				case 7:
-					//zxc
-					break;
-				case 8:
-					//zxc
+					teachers.sortTeachersSpecialities();
 					break;
 				case 0:
 					marker2 = 0;
@@ -72,32 +68,27 @@ int main(int argc, const char * argv[]) {
 			std::cin >> quantity;
 			std::cin.ignore();
 			system("cls");
-			//Students students(quantity);
+			Students students(quantity);
 			while (marker2) {
 				switch (menuStudent()) {
 				case 1:
-					//zxc
+					students.setStudents();
+					system("cls");
 					break;
 				case 2:
-					//zxc
+					students.setStudents("input.txt");
+					system("cls");
 					break;
 				case 3:
-					//zxc
+					system("cls");
+					students.showStudents();
 					break;
 				case 4:
-					//zxc
+					students.outStudents("output.txt");
+					system("cls");
 					break;
 				case 5:
-					//zxc
-					break;
-				case 6:
-					//zxc
-					break;
-				case 7:
-					//zxc
-					break;
-				case 8:
-					//zxc
+					students.sortStudentsSubjects();
 					break;
 				case 0:
 					marker2 = 0;
@@ -111,11 +102,7 @@ int main(int argc, const char * argv[]) {
 		}
 		case 3:
 		{
-			std::cout << "Enter a quantity of specialities" << std::endl;
-			std::cin >> quantity;
-			std::cin.ignore();
-			system("cls");
-			Specialities specialities(quantity);
+			Specialities specialities;
 			while (marker2) {
 				switch (menuSpeciality()) {
 				case 1:
@@ -159,11 +146,7 @@ int main(int argc, const char * argv[]) {
 		}
 		case 4:
 		{
-			std::cout << "Enter a quantity of groups" << std::endl;
-			std::cin >> quantity;
-			std::cin.ignore();
-			system("cls");
-			Groups groups(quantity);
+			Groups groups;
 			while (marker2) {
 				switch (menuGroup()) {
 				case 1:
@@ -203,11 +186,7 @@ int main(int argc, const char * argv[]) {
 		}
 		case 5:
 		{
-			std::cout << "Enter a quantity of subjects" << std::endl;
-			std::cin >> quantity;
-			std::cin.ignore();
-			system("cls");
-			Subjects subjects(quantity);
+			Subjects subjects;
 			while (marker2) {
 				switch (menuSubject()) {
 				case 1:
@@ -251,11 +230,7 @@ int main(int argc, const char * argv[]) {
 		}
 		case 6:
 		{
-			std::cout << "Enter a quantity of auditories" << std::endl;
-			std::cin >> quantity; // tut mojno exception priebashit'
-			std::cin.ignore();
-			system("cls");
-			Audiences audiences(quantity);
+			Audiences audiences;
 			while (marker2) {
 				switch (menuAudience()) {
 				case 1:

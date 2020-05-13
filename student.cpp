@@ -1,14 +1,14 @@
-#include "student.hpp"
+﻿#include "student.hpp"
 Student::Student(){}
 Student::~Student(){}
 
 
 void Student::show() const{
     std::cout << studentName << " " << studentSurname << " " << studentGroup << " " << studentSpeciality << " ";
-    for(int i = 0; i < subjects.getSubjectsSize() - 1; i++){
+    for(int i = 0; i < subjects.getSubjectsSize(); i++){
         std::cout << subjects[i] << " ";
     }
-    for(int i = 0; i < audiences.getAudiencesSize() - 1; i++){
+    for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
 }
@@ -36,14 +36,25 @@ void Student::showSpeciality() const{
     std::cout << studentSpeciality << std::endl;
 }
 void Student::showSubjects() const{
-    for(int i = 0; i < subjects.getSubjectsSize() - 1; i++){
+    for(int i = 0; i < subjects.getSubjectsSize(); i++){
         std::cout << subjects[i] << " ";
     }
 }
 void Student::showAudiences() const{
-    for(int i = 0; i < audiences.getAudiencesSize() - 1; i++){
+    for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
+}
+void Student::sortSubjects()
+{
+	for (int i = 0; i < subjects.getSubjectsSize()- 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+	{
+		for (int j = 0; j < subjects.getSubjectsSize() - i - 1; j++)
+		{
+			if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+				std::swap(subjects[j], subjects[j + 1]);
+		}
+	}
 }
 void Student::set(){
     std::cout << "Enter student's name: ";
@@ -167,7 +178,10 @@ void Students::outStudents(std::string filename) const{
     for (int i = 0; i < studentsSize; i++)
         students[i].show(filename);
 }
-void Students::sortStudents(){}
+void Students::sortStudentsSubjects(){
+	for (int i = 0; i < studentsSize; i++)
+		students[i].sortSubjects();
+}
 int Students::getStudentsSize() const
 {
     return studentsSize;

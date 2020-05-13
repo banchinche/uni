@@ -77,7 +77,6 @@ public:
 class Groups{
 public:
     Groups();
-    Groups(const int size);
     ~Groups();
     void showGroups();
     Group& operator [] (const int number) const;
@@ -97,7 +96,6 @@ private:
 class Audiences {
 public:
     Audiences();
-    Audiences(const int size);
     ~Audiences();
     void showAudiences();
     Audience& operator [] (const int number) const;
@@ -115,7 +113,6 @@ private:
 class Subjects {
 public:
     Subjects();
-    Subjects(const int size);
     ~Subjects();
     void showSubjects();
     Subject& operator [] (const int number) const;
@@ -134,7 +131,6 @@ private:
 class Specialities {
 public:
     Specialities();
-    Specialities(const int size);
     ~Specialities();
     void showSpecialities();
     Speciality& operator [] (const int number) const;

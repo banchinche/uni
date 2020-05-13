@@ -173,13 +173,6 @@ std::ifstream & operator >> (std::ifstream & fin, Speciality & speciality)
 Groups::Groups()
 {
 }
-
-Groups::Groups(const int size)
-{
-    this->groupsSize = size;
-    groups = new Group[groupsSize];
-}
-
 Groups::~Groups()
 {
     delete[] groups;
@@ -214,11 +207,18 @@ int Groups::getGroupsSize() const
 }
 void Groups::setGroups()
 {
+	std::cout << "Enter quantity of groups" << std::endl;
+	std::cin >> groupsSize;
+	std::cin.ignore();
+	groups = new Group[groupsSize];
     for (int i = 0; i < groupsSize; i++)
         std::cin >> groups[i];
 }
 void Groups::setGroups(std::ifstream & fin)
 {
+	fin >> groupsSize;
+	fin.ignore();
+	groups = new Group[groupsSize];
     for (int i = 0; i < groupsSize; i++)
         fin >> groups[i];
 }
@@ -237,15 +237,9 @@ void Groups::outGroups(std::ofstream & fout) const
 Audiences::Audiences()
 {
 }
-
-Audiences::Audiences(const int size)
-{
-    this->audiencesSize = size;
-    audiences = new Audience[audiencesSize];
-}
-
 Audiences::~Audiences()
 {
+	delete[] audiences;
 }
 
 void Audiences::showAudiences()
@@ -265,11 +259,18 @@ int Audiences::getAudiencesSize() const
 }
 void Audiences::setAudiences()
 {
+	std::cout << "Enter quantity of audiences" << std::endl;
+	std::cin >> audiencesSize;
+	std::cin.ignore();
+	audiences = new Audience[audiencesSize];
     for (int i = 0; i < audiencesSize; i++)
         std::cin >> audiences[i];
 }
 void Audiences::setAudiences(std::ifstream & fin)
 {
+	fin >> audiencesSize;
+	fin.ignore();
+	audiences = new Audience[audiencesSize];
     for (int i = 0; i < audiencesSize; i++)
         fin >> audiences[i];
 }
@@ -288,12 +289,6 @@ void Audiences::outAudiences(std::ofstream & fout) const
 
 Subjects::Subjects()
 {
-}
-
-Subjects::Subjects(const int size)
-{
-    this->subjectsSize = size;
-    subjects = new Subject[subjectsSize];
 }
 
 Subjects::~Subjects()
@@ -330,11 +325,18 @@ int Subjects::getSubjectsSize() const
 }
 void Subjects::setSubjects()
 {
+	std::cout << "Enter quantity of subjects" << std::endl;
+	std::cin >> subjectsSize;
+	std::cin.ignore();
+	subjects = new Subject[subjectsSize];
     for (int i = 0; i < subjectsSize; i++)
         std::cin >> subjects[i];
 }
 void Subjects::setSubjects(std::ifstream & fin)
 {
+	fin >> subjectsSize;
+	fin.ignore();
+	subjects = new Subject[subjectsSize];
     for (int i = 0; i < subjectsSize; i++)
         fin >> subjects[i];
 }
@@ -354,13 +356,6 @@ void Subjects::outSubjects(std::ofstream & fout) const
 Specialities::Specialities()
 {
 }
-
-Specialities::Specialities(const int size)
-{
-    this->specialitiesSize = size;
-    specialities = new Speciality[specialitiesSize];
-}
-
 Specialities::~Specialities()
 {
     delete[] specialities;
@@ -379,12 +374,19 @@ Speciality & Specialities::operator[](const int number) const
 
 void Specialities::setSpecialities()
 {
+	std::cout << "Enter quantity of specialities" << std::endl;
+	std::cin >> specialitiesSize;
+	std::cin.ignore();
+	specialities = new Speciality[specialitiesSize];
     for (int i = 0; i < specialitiesSize; i++)
         std::cin >> specialities[i];
 }
 
 void Specialities::setSpecialities(std::ifstream & fin)
 {
+	fin >> specialitiesSize;
+	fin.ignore();
+	specialities = new Speciality[specialitiesSize];
     for (int i = 0; i < specialitiesSize; i++)
         fin >> specialities[i];
 }
