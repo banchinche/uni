@@ -12,6 +12,7 @@ public:
     Student();
     ~Student();
     void show() const;
+    void show(std::string filename) const;
     void showName() const;
     void showSurname() const;
     void showGroup() const;
@@ -35,4 +36,23 @@ public:
     void setAudiences(std::string filename);
 
 
+};
+
+class Students {
+private:
+    Student *students = nullptr;
+    int studentsSize;
+public:
+    Students();
+    Students(const int size);
+    ~Students();
+    void showStudents();
+    Student& operator [] (const int number) const;
+    void setStudents();
+    void setStudents(std::string filename);
+    void outStudents() const;
+    void outStudents(std::string filename) const;
+    void sortStudents();
+    int getStudentsSize() const;
+    void setStudentsSize();
 };
