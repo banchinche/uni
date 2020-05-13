@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 typedef unsigned int uint64;
+class TooMuchSymbols : std::exception {};
+class TooMuchDimension : std::exception {};
 struct Date{
     uint64 day;
     uint64 month;
