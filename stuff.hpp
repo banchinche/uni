@@ -28,7 +28,7 @@ class Audience{
 private:
     uint64 audienceNumber;
 public:
-	Audience(); // попрописывать какие методы константные 
+	Audience(); // ГЇГ®ГЇГ°Г®ГЇГЁГ±Г»ГўГ ГІГј ГЄГ ГЄГЁГҐ Г¬ГҐГІГ®Г¤Г» ГЄГ®Г­Г±ГІГ Г­ГІГ­Г»ГҐ 
 	~Audience();
 	void show();
 	uint64 get();
@@ -82,7 +82,7 @@ public:
 	void showGroups();
 	Group& operator [] (const int number) const;
 	void sortGroups();
-	int getGroupsSize();
+	int getGroupsSize() const;
 	void setGroups();
 	void setGroups(std::ifstream & fin);
 	void outGroups();
@@ -101,7 +101,7 @@ public:
 	~Audiences();
 	void showAudiences();
 	Audience& operator [] (const int number) const;
-	int getAudiencesSize();
+	int getAudiencesSize() const;
 	void setAudiences();
 	void setAudiences(std::ifstream & fin);
 	void outAudiences();
@@ -120,7 +120,7 @@ public:
 	void showSubjects();
 	Subject& operator [] (const int number) const;
 	void sortSubjects();
-	int getSubjectsSize();
+	int getSubjectsSize() const;
 	void setSubjects();
 	void setSubjects(std::ifstream & fin);
 	void outSubjects();
@@ -143,7 +143,7 @@ public:
 	void outSpecialities();
 	void outSpecialities(std::ofstream & fout);
 	void sortSpecialities();
-	int getSpecialitiesSize();
+	int getSpecialitiesSize() const;
 private:
 	Speciality *specialities;
 	int specialitiesSize;
