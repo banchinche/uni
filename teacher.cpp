@@ -14,6 +14,18 @@ void Teacher::show() const{
         std::cout << groups[i] << " ";
     }
 }
+void Teacher::show(std::string filename) const{
+    std::ofstream out;
+    out.open(filename);
+    out << teacherName;
+    out << teacherPatronymic;
+    out << teacherSurname;
+    out << teacherSubject;
+    specialities.outSpecialities(out);
+    audiences.outAudiences(out);
+    groups.outGroups(out);
+    out.close();
+}
 void Teacher::showName() const{
     std::cout << teacherName << std::endl;
 }
@@ -131,4 +143,57 @@ void Teacher::setGroups(std::string filename){
     in.open(filename);
     groups.setGroups(in);
     in.close();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teachers::Teachers(){}
+Teachers::Teachers(const int size){
+    this->teachersSize = size;
+    teachers = new Teacher[teachersSize];
+}
+Teachers::~Teachers(){
+    delete[] teachers;
+}
+void Teachers::showTeachers(){
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].show();
+}
+Teacher & Teachers::operator[](const int number) const{
+    return teachers[number];
+}
+void Teachers::setTeachers(){
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].set();
+}
+void Teachers::setTeachers(std::string filename){
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].set(filename);
+}
+void Teachers::outTeachers() const{
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].show();
+}
+void Teachers::outTeachers(std::string filename) const{
+    for (int i = 0; i < teachersSize; i++)
+        teachers[i].show(filename);
+}
+void Teachers::sortTeachers(){}
+int Teachers::getTeachersSize() const
+{
+    return teachersSize;
+}
+void Teachers::setTeachersSize(){
+    std::cout << "Enter a number of teachers: ";
+    std::cin >> teachersSize;
 }
