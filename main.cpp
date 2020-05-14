@@ -28,17 +28,17 @@ int main(int argc, const char * argv[]) {
 		{
 			std::cout << "Enter a quantity of teachers" << std::endl;
 			std::cin >> quantity;
-			std::cin.ignore();
 			system("cls");
 			Teachers teachers(quantity);
 			while (marker2) {
 				switch (menuTeacher()) {
 				case 1:
+					std::cin.ignore();
 					teachers.setTeachers();
 					system("cls");
 					break;
 				case 2:
-					teachers.setTeachers("input.txt");
+					teachers.setTeachers("inputTeachers.txt");
 					system("cls");
 					break;
 				case 3:
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
 					teachers.showTeachers();
 					break;
 				case 4:
-					teachers.outTeachers("output.txt");
+					teachers.outTeachers("outputTeachers.txt");
 					system("cls");
 					break;
 				case 5:
@@ -59,14 +59,13 @@ int main(int argc, const char * argv[]) {
 					break;
 				}
 			}
-			marker2 = 1; // не уверен что это нужно
+			marker2 = 1; 
 			break;
 		}
 		case 2:
 		{
 			std::cout << "Enter a quantity of students" << std::endl;
 			std::cin >> quantity;
-			std::cin.ignore();
 			system("cls");
 			Students students(quantity);
 			while (marker2) {
@@ -76,7 +75,7 @@ int main(int argc, const char * argv[]) {
 					system("cls");
 					break;
 				case 2:
-					students.setStudents("input.txt");
+					students.setStudents("inputStudents.txt");
 					system("cls");
 					break;
 				case 3:
@@ -84,7 +83,7 @@ int main(int argc, const char * argv[]) {
 					students.showStudents();
 					break;
 				case 4:
-					students.outStudents("output.txt");
+					students.outStudents("outputStudents.txt");
 					system("cls");
 					break;
 				case 5:
@@ -112,7 +111,7 @@ int main(int argc, const char * argv[]) {
 				case 2:
 				{
 					std::ifstream fin;
-					fin.open("input.txt");
+					fin.open("inputSpecialities.txt");
 					specialities.setSpecialities(fin);
 					fin.close();
 					system("cls");
@@ -125,7 +124,7 @@ int main(int argc, const char * argv[]) {
 				case 4:
 				{
 					std::ofstream fout;
-					fout.open("output.txt");
+					fout.open("outputSpecialities.txt");
 					specialities.outSpecialities(fout);
 					system("cls");
 					break;
@@ -156,7 +155,7 @@ int main(int argc, const char * argv[]) {
 				case 2:
 				{
 					std::ifstream fin;
-					fin.open("input.txt");
+					fin.open("inputGroups.txt");
 					groups.setGroups(fin);
 					fin.close();
 					system("cls");
@@ -169,7 +168,7 @@ int main(int argc, const char * argv[]) {
 				case 4:
 				{
 					std::ofstream fout;
-					fout.open("output.txt");
+					fout.open("outputGroups.txt");
 					groups.outGroups(fout);
 					system("cls");
 					break;
@@ -196,7 +195,7 @@ int main(int argc, const char * argv[]) {
 				case 2:
 				{
 					std::ifstream fin;
-					fin.open("input.txt");
+					fin.open("inputSubjects.txt");
 					subjects.setSubjects(fin);
 					fin.close();
 					system("cls");
@@ -209,7 +208,7 @@ int main(int argc, const char * argv[]) {
 				case 4:
 				{
 					std::ofstream fout;
-					fout.open("output.txt");
+					fout.open("outputSubjects.txt");
 					subjects.outSubjects(fout);
 					system("cls");
 					break;
@@ -240,7 +239,7 @@ int main(int argc, const char * argv[]) {
 				case 2:
 				{
 					std::ifstream fin;
-					fin.open("input.txt");
+					fin.open("inputAudiences.txt");
 					audiences.setAudiences(fin);
 					fin.close();
 					system("cls");
@@ -253,7 +252,7 @@ int main(int argc, const char * argv[]) {
 				case 4:
 				{
 					std::ofstream fout;
-					fout.open("output.txt");
+					fout.open("outputAudiences.txt");
 					audiences.outAudiences(fout);
 					system("cls");
 					break;
@@ -269,7 +268,7 @@ int main(int argc, const char * argv[]) {
 			break;
 		}
 		case 0:
-			return 0; // ne uveren
+			return 0; 
 		default:
 			break;
 			}
@@ -280,9 +279,10 @@ int main(int argc, const char * argv[]) {
 uint64 menuStudent() 
 {
 	uint64 choice = 0;
-	std::cout << "1 - Read data from console. \n";
-	std::cout << "2 - Read data from file.\n";
-	std::cout << "3 - Show data to console.\n";
+	std::cout << "Student base" << std::endl;
+	std::cout << "1 - Read data  from console. \n";
+	std::cout << "2 - Read data  from file.\n";
+	std::cout << "3 - Show data  to console.\n";
 	std::cout << "4 - Write data to file.\n";
 	std::cout << "5 - Sort subjects to alphabet.\n";
 	std::cout << "0 - Return to previous menu. \n";
@@ -302,9 +302,10 @@ uint64 menuStudent()
 
 uint64 menuTeacher() {
 	uint64 choice = 0;
-	std::cout << "1 - Read data from console. \n";
-	std::cout << "2 - Read data from file.\n";
-	std::cout << "3 - Show data to console.\n";
+	std::cout << "Teacher base" << std::endl;
+	std::cout << "1 - Read data  from console. \n";
+	std::cout << "2 - Read data  from file.\n";
+	std::cout << "3 - Show data  to console.\n";
 	std::cout << "4 - Write data to file.\n";
 	std::cout << "5 - Sort specialities to alphabet.\n";
 	std::cout << "0 - Return to previous menu. \n";
@@ -323,6 +324,7 @@ uint64 menuTeacher() {
 }
 	uint64 menuSpeciality() {
 		uint64 choice = 0;
+		std::cout << "Speciality base" << std::endl;
 		std::cout << "1 - Read data from console. \n";
 		std::cout << "2 - Read data from file.\n";
 		std::cout << "3 - Show data to console.\n";
@@ -344,6 +346,7 @@ uint64 menuTeacher() {
 	}
 	uint64 menuGroup() {
 		uint64 choice = 0;
+		std::cout << "Group base" << std::endl;
 		std::cout << "1 - Read data from console. \n";
 		std::cout << "2 - Read data from file.\n";
 		std::cout << "3 - Show data to console.\n";
@@ -364,6 +367,7 @@ uint64 menuTeacher() {
 	}
 	uint64 menuSubject() {
 		uint64 choice = 0;
+		std::cout << "Subject base" << std::endl;
 		std::cout << "1 - Read data from console. \n";
 		std::cout << "2 - Read data from file.\n";
 		std::cout << "3 - Show data to console.\n";
@@ -385,6 +389,7 @@ uint64 menuTeacher() {
 	}
 	uint64 menuAudience() {
 		uint64 choice = 0;
+		std::cout << "Audience base" << std::endl;
 		std::cout << "1 - Read data from console. \n";
 		std::cout << "2 - Read data from file.\n";
 		std::cout << "3 - Show data to console.\n";

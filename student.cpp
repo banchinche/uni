@@ -82,6 +82,7 @@ void Student::set(){
     std::cin >> studentSpeciality;
     subjects.setSubjects();
     audiences.setAudiences();
+	std::cin.ignore();
 }
 void Student::set(std::string filename){
     std::ifstream in;

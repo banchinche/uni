@@ -103,6 +103,7 @@ void Teacher::set(){
    this->specialities.setSpecialities();
     audiences.setAudiences();
     groups.setGroups();
+	std::cin.ignore();
 }
 void Teacher::set(std::string filename){
     std::ifstream in;
