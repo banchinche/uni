@@ -7,20 +7,23 @@ void Teacher::show() const{
     for(int i = 0; i < specialities.getSpecialitiesSize(); i++){
         std::cout << specialities[i] << " ";
     }
+    std::cout << std::endl;
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
+    std::cout << std::endl;
     for(int i = 0; i < groups.getGroupsSize(); i++){
         std::cout << groups[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Teacher::show(std::string filename) const{
     std::ofstream out;
     out.open(filename);
-    out << teacherName;
-    out << teacherPatronymic;
-    out << teacherSurname;
-    out << teacherSubject;
+    out << teacherName << std::endl;
+    out << teacherPatronymic << std::endl;
+    out << teacherSurname << std::endl;
+    out << teacherSubject << std::endl;
     specialities.outSpecialities(out);
     audiences.outAudiences(out);
     groups.outGroups(out);
@@ -42,16 +45,19 @@ void Teacher::showSpecialities() const{
     for(int i = 0; i < specialities.getSpecialitiesSize(); i++){
         std::cout << specialities[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Teacher::showAudiences() const{
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Teacher::showGroups() const{
     for(int i = 0; i < groups.getGroupsSize(); i++){
         std::cout << groups[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Teacher::sortSpecialities()
 {
@@ -103,7 +109,7 @@ void Teacher::set(){
    this->specialities.setSpecialities();
     audiences.setAudiences();
     groups.setGroups();
-	std::cin.ignore();
+    std::cin.ignore();
 }
 void Teacher::set(std::string filename){
     std::ifstream in;
