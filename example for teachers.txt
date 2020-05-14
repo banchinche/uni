@@ -1,6 +1,7 @@
 size of array
 name
 patronymic
+surname
 subject
 -space-
 size of specialities
