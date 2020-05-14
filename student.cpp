@@ -8,17 +8,19 @@ void Student::show() const{
     for(int i = 0; i < subjects.getSubjectsSize(); i++){
         std::cout << subjects[i] << " ";
     }
+    std::cout << std::endl;
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Student::show(std::string filename) const{
     std::ofstream out;
     out.open(filename);
-    out << studentName;
-    out << studentSurname;
-    out << studentGroup;
-    out << studentSpeciality;
+    out << studentName << std::endl;
+    out << studentSurname << std::endl;
+    out << studentGroup << std::endl;
+    out << studentSpeciality << std::endl;
     subjects.outSubjects(out);
     audiences.outAudiences(out);
     out.close();
@@ -39,11 +41,13 @@ void Student::showSubjects() const{
     for(int i = 0; i < subjects.getSubjectsSize(); i++){
         std::cout << subjects[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Student::showAudiences() const{
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
         std::cout << audiences[i] << " ";
     }
+    std::cout << std::endl;
 }
 void Student::sortSubjects()
 {
@@ -82,7 +86,7 @@ void Student::set(){
     std::cin >> studentSpeciality;
     subjects.setSubjects();
     audiences.setAudiences();
-	std::cin.ignore();
+    std::cin.ignore();
 }
 void Student::set(std::string filename){
     std::ifstream in;
