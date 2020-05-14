@@ -1,0 +1,2 @@
+size of array  = n
+group's name n time

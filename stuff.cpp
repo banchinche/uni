@@ -12,7 +12,7 @@ Group::~Group()
 
 void Group::show()
 {
-    std::cout << "Group name is" << groupName << std::endl;
+    std::cout << "Group name is " << groupName << std::endl;
 }
 
 std::string Group::get()
@@ -99,7 +99,7 @@ Subject::~Subject()
 
 void Subject::show()
 {
-    std::cout << "Subject's name is" << subjectName << std::endl;
+    std::cout << "Subject's name is " << subjectName << std::endl;
 }
 std::string Subject::get()
 {
@@ -140,7 +140,7 @@ Speciality::~Speciality()
 
 void Speciality::show()
 {
-    std::cout << "Specialities name is" << specialityName << std::endl;
+    std::cout << "Specialities name is " << specialityName << std::endl;
 }
 
 std::string Speciality::get()
@@ -229,8 +229,10 @@ void Groups::outGroups()
 }
 void Groups::outGroups(std::ofstream & fout) const
 {
+	fout << groupsSize << std::endl;
     for (int i = 0; i < groupsSize; i++)
         fout << groups[i];
+	fout << std::endl;
 }
 #pragma endregion
 #pragma region Audiences
@@ -281,8 +283,10 @@ void Audiences::outAudiences()
 }
 void Audiences::outAudiences(std::ofstream & fout) const
 {
+	fout << audiencesSize << std::endl;
     for (int i = 0; i < audiencesSize; i++)
         fout << audiences[i];
+	fout << std::endl;
 }
 #pragma endregion
 #pragma region Subjects
@@ -347,8 +351,10 @@ void Subjects::outSubjects()
 }
 void Subjects::outSubjects(std::ofstream & fout) const
 {
+	fout << subjectsSize << std::endl;
     for (int i = 0; i < subjectsSize; i++)
         fout << subjects[i];
+	fout << std::endl;
 }
 #pragma endregion
 #pragma region Specialities
@@ -399,8 +405,10 @@ void Specialities::outSpecialities()
 
 void Specialities::outSpecialities(std::ofstream & fout) const
 {
+	fout << specialitiesSize << std::endl;
     for (int i = 0; i < specialitiesSize; i++)
         fout << specialities[i];
+	fout << std::endl;
 }
 
 void Specialities::sortSpecialities()

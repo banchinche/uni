@@ -1,6 +1,7 @@
 #include "stuff.hpp"
 #include "teacher.hpp"
 #include "student.hpp"
+#include <windows.h>
 class WrongChoice : std::exception {};
 uint64 menuStudent();
 uint64 menuTeacher();
@@ -9,9 +10,12 @@ uint64 menuGroup();
 uint64 menuSubject();
 uint64 menuAudience();
 int main(int argc, const char * argv[]) {
+	setlocale(LC_ALL, "Russian");
 	uint64 choice = 0;
 	bool marker = 1;
 	uint64 quantity = 0;
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	while (marker) {
 		std::cout << "1 - Create a teacher base.\n";
 		std::cout << "2 - Create a student base.\n";
