@@ -1,2 +1,0 @@
-size of array  = n
-audiences name n time

@@ -1,2 +1,0 @@
-size of array  = n
-specialities name n time
