@@ -16,7 +16,7 @@ void Student::show() const{
 }
 void Student::show(std::string filename) const{
     std::ofstream out;
-    out.open(filename);
+    out.open(filename, std::ios::ate);
     out << studentName << std::endl;
     out << studentSurname << std::endl;
     out << studentGroup << std::endl;
