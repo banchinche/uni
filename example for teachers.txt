@@ -1,0 +1,14 @@
+size of array
+name
+patronymic
+subject
+-space-
+size of specialities
+array of specialities
+-space-
+size of audiences
+array of audiences
+-space-
+size of groups
+array of groups
+

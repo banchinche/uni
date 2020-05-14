@@ -1,6 +1,7 @@
 #pragma once
 #include "stuff.hpp"
 #include <iostream>
+#pragma region Teacher
 class Teacher{
 private:
     std::string teacherName;
@@ -11,53 +12,70 @@ private:
     Audiences audiences;
     Groups groups;
 public:
+	//конструктор
     Teacher();
+	//деструктор
     ~Teacher();
+	//выводит всю информацию о преподавателе на консоль
     void show() const;
-    void show(std::string filename) const;
-    void showName() const;
-    void showPatronymic() const;
-    void showSurname() const;
-    void showSubject() const;
-    void showSpecialities() const;
-    void showAudiences() const;
-    void showGroups() const;
+	// выводит всю информацию о преподавателе в файл
+    void show(const std::string filename) const;
+	// выводит им€
+	// сортирует специальности в алфавитном пор€дке пузырьковым методом с помощью функции compare дл€ string-строк.
 	void sortSpecialities();
+	// общий сеттер из консоли
     void set();
-    void set(std::string filename);
+	// сеттер из файла(вызывает все необходимые сеттеры)
+    void set(const std::string filename);
+	// сеттеры отдельных полей из консоли/ файла.
+	// выходных данных нет.
     void setName();
-    void setName(std::string filename);
+    void setName(const std::string filename);
     void setPatronymic();
-    void setPatronymic(std::string filename);
+    void setPatronymic(const std::string filename);
     void setSurname();
-    void setSurname(std::string filename);
+    void setSurname(const std::string filename);
     void setSubject();
-    void setSubject(std::string filename);
+    void setSubject(const std::string filename);
     void setSpecialities();
-    void setSpecialities(std::string filename);
+    void setSpecialities(const std::string filename);
     void setAudiences();
-    void setAudiences(std::string filename);
+    void setAudiences(const std::string filename);
     void setGroups();
-    void setGroups(std::string filename);
-
+    void setGroups(const std::string filename);
 };
-
-
+#pragma endregion
+#pragma region Teachers
 class Teachers {
 private:
     Teacher *teachers = nullptr;
     int teachersSize;
 public:
+	// конструктор
     Teachers();
+	// конструктор с параметром, выдел€ющий пам€ть под массив
     Teachers(const int size);
+	// деструктор
     ~Teachers();
+	// выводит на консоль массив учителей
     void showTeachers();
+	// перегруженный оператор [] дл€ массива объектов.
+	// входные данные:индекс объета
+	// выходные данные: объект типа Teacher.
     Teacher& operator [] (const int number) const;
+	//сеттер учителей из консоли
     void setTeachers();
-    void setTeachers(std::string filename);
+	// сеттер учителей из файла.
+    void setTeachers(const std::string filename);
+	// выводит всю информацию об учител€х на консоль.
     void outTeachers() const;
-    void outTeachers(std::string filename)const;
+	// выводит всю информацию об учител€х в файл.
+    void outTeachers(const std::string filename)const;
+	// сортирует специальности, которые обучаютс€ у данного преподавател€.
     void sortTeachersSpecialities();
+	// выходные данные: возвращает размер массива
     int getTeachersSize() const;
+	// устанавливает размер массива
     void setTeachersSize();
 };
+#pragma endregion

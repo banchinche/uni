@@ -1,22 +1,21 @@
 #include "student.hpp"
+#pragma region Student
 Student::Student(){}
 Student::~Student(){}
-
-
 void Student::show() const{
-    std::cout << studentName << " " << studentSurname << " " << studentGroup << " " << studentSpeciality << " ";
+    std::cout << studentName << " " << studentSurname << " " << studentGroup << studentSpeciality;
     for(int i = 0; i < subjects.getSubjectsSize(); i++){
-        std::cout << subjects[i] << " ";
+        std::cout << subjects[i];
     }
     std::cout << std::endl;
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
-        std::cout << audiences[i] << " ";
+        std::cout << audiences[i];
     }
     std::cout << std::endl;
 }
-void Student::show(std::string filename) const{
+void Student::show(const std::string filename) const{
     std::ofstream out;
-    out.open(filename, std::ios::ate);
+    out.open(filename, std::ios::app);
     out << studentName << std::endl;
     out << studentSurname << std::endl;
     out << studentGroup << std::endl;
@@ -25,37 +24,13 @@ void Student::show(std::string filename) const{
     audiences.outAudiences(out);
     out.close();
 }
-void Student::showName() const{
-    std::cout << studentName << std::endl;
-}
-void Student::showSurname() const{
-    std::cout << studentSurname << std::endl;
-}
-void Student::showGroup() const{
-    std::cout << studentGroup << std::endl;
-}
-void Student::showSpeciality() const{
-    std::cout << studentSpeciality << std::endl;
-}
-void Student::showSubjects() const{
-    for(int i = 0; i < subjects.getSubjectsSize(); i++){
-        std::cout << subjects[i] << " ";
-    }
-    std::cout << std::endl;
-}
-void Student::showAudiences() const{
-    for(int i = 0; i < audiences.getAudiencesSize(); i++){
-        std::cout << audiences[i] << " ";
-    }
-    std::cout << std::endl;
-}
 void Student::sortSubjects()
 {
-    for (int i = 0; i < subjects.getSubjectsSize()- 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    for (int i = 0; i < subjects.getSubjectsSize()- 1; i++) 
     {
         for (int j = 0; j < subjects.getSubjectsSize() - i - 1; j++)
         {
-            if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+            if (subjects[j].get().compare(subjects[j + 1].get()) > 0) 
                 std::swap(subjects[j], subjects[j + 1]);
         }
     }
@@ -90,7 +65,7 @@ void Student::set(){
     audiences.setAudiences();
     std::cin.ignore();
 }
-void Student::set(std::string filename){
+void Student::set(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> studentName;
@@ -114,7 +89,7 @@ void Student::setName(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
 }
-void Student::setName(std::string filename){
+void Student::setName(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> studentName;
@@ -133,7 +108,7 @@ void Student::setSurname(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
 }
-void Student::setSurname(std::string filename){
+void Student::setSurname(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> studentSurname;
@@ -142,7 +117,7 @@ void Student::setSurname(std::string filename){
 void Student::setGroup(){
     std::cin >> studentGroup;
 }
-void Student::setGroup(std::string filename){
+void Student::setGroup(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> studentGroup;
@@ -151,7 +126,7 @@ void Student::setGroup(std::string filename){
 void Student::setSpeciality(){
     std::cin >> studentSpeciality;
 }
-void Student::setSpeciality(std::string filename){
+void Student::setSpeciality(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> studentSpeciality;
@@ -160,7 +135,7 @@ void Student::setSpeciality(std::string filename){
 void Student::setSubjects(){
     subjects.setSubjects();
 }
-void Student::setSubjects(std::string filename){
+void Student::setSubjects(const std::string filename){
     std::ifstream in;
     in.open(filename);
     subjects.setSubjects(in);
@@ -169,25 +144,14 @@ void Student::setSubjects(std::string filename){
 void Student::setAudiences(){
     audiences.setAudiences();
 }
-void Student::setAudiences(std::string filename){
+void Student::setAudiences(const std::string filename){
     std::ifstream in;
     in.open(filename);
     audiences.setAudiences(in);
     in.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+#pragma endregion
+#pragma region Students
 Students::Students(){}
 Students::Students(const int size){
     this->studentsSize = size;
@@ -208,7 +172,7 @@ void Students::setStudents(){
     for (int i = 0; i < studentsSize; i++)
         students[i].set();
 }
-void Students::setStudents(std::string filename){
+void Students::setStudents(const std::string filename){
     for (int i = 0; i < studentsSize; i++)
         students[i].set(filename);
 }
@@ -216,7 +180,7 @@ void Students::outStudents() const{
     for (int i = 0; i < studentsSize; i++)
         students[i].show();
 }
-void Students::outStudents(std::string filename) const{
+void Students::outStudents(const std::string filename) const{
     for (int i = 0; i < studentsSize; i++)
         students[i].show(filename);
 }
@@ -243,3 +207,4 @@ void Students::setStudentsSize(){
         }
     }
 }
+#pragma endregion

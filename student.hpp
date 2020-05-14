@@ -1,5 +1,6 @@
 #pragma once
 #include "stuff.hpp"
+#pragma region Student
 class Student{
 private:
     std::string studentName;
@@ -9,50 +10,65 @@ private:
     Subjects subjects;
     Audiences audiences;
 public:
+	// конструктор
     Student();
+	// деструктор
     ~Student();
+	// показывает на консоль данные студента.
     void show() const;
-    void show(std::string filename) const;
-    void showName() const;
-    void showSurname() const;
-    void showGroup() const;
-    void showSpeciality() const;
-    void showSubjects() const;
-    void showAudiences() const;
+	// выводит в файл все данные студента.
+    void show(const std::string filename) const;
 	void sortSubjects();
+	//общий сеттер из консоли
     void set();
-    void set(std::string filename);
+	// общий сеттер из файла.
+    void set(const std::string filename);
+	// сеттеры дл€ отдельных полей с консоли/ файла.
     void setName();
-    void setName(std::string filename);
+    void setName(const std::string filename);
     void setSurname();
-    void setSurname(std::string filename);
+    void setSurname(const std::string filename);
     void setGroup();
-    void setGroup(std::string filename);
+    void setGroup(const std::string filename);
     void setSpeciality();
-    void setSpeciality(std::string filename);
+    void setSpeciality(const std::string filename);
     void setSubjects();
-    void setSubjects(std::string filename);
+    void setSubjects(const std::string filename);
     void setAudiences();
-    void setAudiences(std::string filename);
-
-
+    void setAudiences(const std::string filename);
 };
-
+#pragma endregion
+#pragma region Students
 class Students {
 private:
     Student *students = nullptr;
     int studentsSize;
 public:
+	// конструктор
     Students();
+	// конструктор с параметром, параметр - размер массива объектов. в конструкторе выдел€етс€ пам€ть и с консоли заполн€ютс€ данные.
     Students(const int size);
+	// деструктор
     ~Students();
+	// выводит информацию о студентах на консоль
     void showStudents();
+	// перегруженный оператор [].
+	// входные данные: индекс элемента
+	// выходные данные: объект типа Student.
     Student& operator [] (const int number) const;
+	// сеттер студентов из консоли
     void setStudents();
-    void setStudents(std::string filename);
+	// сеттер студентов из файла
+    void setStudents(const std::string filename);
+	// вывод студентов на консоль.
     void outStudents() const;
-    void outStudents(std::string filename) const;
+	// вывод студентов в файл
+    void outStudents(const std::string filename) const;
+	// сортировка предметов, которым обучаютс€ студенты методом пузырьковой сортировки и использованием функции compare.
     void sortStudentsSubjects();
+	// возвращает размер массива
     int getStudentsSize() const;
+	// устанавливает размер массива
     void setStudentsSize();
 };
+#pragma endregion

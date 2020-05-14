@@ -2,15 +2,14 @@
 #include "teacher.hpp"
 #include "student.hpp"
 #include <windows.h>
-class WrongChoice : std::exception {};
-uint64 menuStudent();
-uint64 menuTeacher();
-uint64 menuSpeciality();
-uint64 menuGroup();
-uint64 menuSubject();
-uint64 menuAudience();
-int main(int argc, const char * argv[]) {
-	setlocale(LC_ALL, "Russian");
+class WrongChoice : std::exception {}; // класс исключений, срабатывающий, когда выбирают неверный пункт в меню
+uint64 menuStudent(); // меню студента
+uint64 menuTeacher(); // меню преподавателя
+uint64 menuSpeciality(); // меню специальности
+uint64 menuGroup(); // меню группы
+uint64 menuSubject(); // меню предмета
+uint64 menuAudience(); // меню аудиторий
+int main() {
 	uint64 choice = 0;
 	bool marker = 1;
 	uint64 quantity = 0;
@@ -34,15 +33,18 @@ int main(int argc, const char * argv[]) {
 			std::cin >> quantity;
 			system("cls");
 			Teachers teachers(quantity);
+			bool is_inisialised = false;
 			while (marker2) {
 				switch (menuTeacher()) {
 				case 1:
 					std::cin.ignore();
 					teachers.setTeachers();
+					is_inisialised = true;
 					system("cls");
 					break;
 				case 2:
 					teachers.setTeachers("inputTeachers.txt");
+					is_inisialised = true;
 					system("cls");
 					break;
 				case 3:
@@ -55,15 +57,21 @@ int main(int argc, const char * argv[]) {
 					break;
 				case 5:
 					teachers.sortTeachersSpecialities();
+					system("cls");
 					break;
 				case 0:
-					marker2 = 0;
-					break;
+					system("cls");
+					if (is_inisialised)
+						marker2 = 0;
+					else {
+						std::cout << "You must initialize the database before exiting the menu" << std::endl;
+						marker2 = 1;
+					}
 				default:
 					break;
 				}
 			}
-			marker2 = 1; 
+			marker2 = 1;
 			break;
 		}
 		case 2:
@@ -72,15 +80,18 @@ int main(int argc, const char * argv[]) {
 			std::cin >> quantity;
 			system("cls");
 			Students students(quantity);
+			bool is_inisialised = false;
 			while (marker2) {
 				switch (menuStudent()) {
 				case 1:
 					std::cin.ignore();
 					students.setStudents();
+					is_inisialised = true;
 					system("cls");
 					break;
 				case 2:
 					students.setStudents("inputStudents.txt");
+					is_inisialised = true;
 					system("cls");
 					break;
 				case 3:
@@ -93,9 +104,16 @@ int main(int argc, const char * argv[]) {
 					break;
 				case 5:
 					students.sortStudentsSubjects();
+					system("cls");
 					break;
 				case 0:
-					marker2 = 0;
+					system("cls");
+					if (is_inisialised)
+						marker2 = 0;
+					else {
+						std::cout << "You must initialize the database before exiting the menu" << std::endl;
+						marker2 = 1;
+					}
 					break;
 				default:
 					break;
@@ -107,6 +125,7 @@ int main(int argc, const char * argv[]) {
 		case 3:
 		{
 			Specialities specialities;
+			system("cls");
 			while (marker2) {
 				switch (menuSpeciality()) {
 				case 1:
@@ -140,6 +159,7 @@ int main(int argc, const char * argv[]) {
 					break;
 				case 0:
 					marker2 = 0;
+					system("cls");
 					break;
 				default:
 					break;
@@ -151,6 +171,7 @@ int main(int argc, const char * argv[]) {
 		case 4:
 		{
 			Groups groups;
+			system("cls");
 			while (marker2) {
 				switch (menuGroup()) {
 				case 1:
@@ -180,6 +201,7 @@ int main(int argc, const char * argv[]) {
 				}
 				case 0:
 					marker2 = 0;
+					system("cls");
 					break;
 				default:
 					break;
@@ -191,6 +213,7 @@ int main(int argc, const char * argv[]) {
 		case 5:
 		{
 			Subjects subjects;
+			system("cls");
 			while (marker2) {
 				switch (menuSubject()) {
 				case 1:
@@ -224,6 +247,7 @@ int main(int argc, const char * argv[]) {
 					break;
 				case 0:
 					marker2 = 0;
+					system("cls");
 					break;
 				default:
 					break;
@@ -235,6 +259,7 @@ int main(int argc, const char * argv[]) {
 		case 6:
 		{
 			Audiences audiences;
+			system("cls");
 			while (marker2) {
 				switch (menuAudience()) {
 				case 1:
@@ -264,6 +289,7 @@ int main(int argc, const char * argv[]) {
 				}
 				case 0:
 					marker2 = 0;
+					system("cls");
 					break;
 				default:
 					break;
@@ -275,6 +301,8 @@ int main(int argc, const char * argv[]) {
 		case 0:
 			return 0; 
 		default:
+			system("cls");
+			std::cout << "Reenter your choice." << std::endl;
 			break;
 			}
 		}
@@ -285,12 +313,12 @@ uint64 menuStudent()
 {
 	uint64 choice = 0;
 	std::cout << "Student base" << std::endl;
-	std::cout << "1 - Read data  from console. \n";
-	std::cout << "2 - Read data  from file.\n";
-	std::cout << "3 - Show data  to console.\n";
+	std::cout << "1 - Read data from console. \n";
+	std::cout << "2 - Read data from file.\n";
+	std::cout << "3 - Show data to console.\n";
 	std::cout << "4 - Write data to file.\n";
 	std::cout << "5 - Sort student's subjects.\n";
-	std::cout << "0 - Return to previous menu. \n";
+	std::cout << "0 - Return to previous menu(if you initialized the database in any way). \n";
 	bool marker = 1;
 	while (marker) {
 		try {
@@ -308,12 +336,12 @@ uint64 menuStudent()
 uint64 menuTeacher() {
 	uint64 choice = 0;
 	std::cout << "Teacher base" << std::endl;
-	std::cout << "1 - Read data  from console. \n";
-	std::cout << "2 - Read data  from file.\n";
-	std::cout << "3 - Show data  to console.\n";
+	std::cout << "1 - Read data from console. \n";
+	std::cout << "2 - Read data from file.\n";
+	std::cout << "3 - Show data to console.\n";
 	std::cout << "4 - Write data to file.\n";
 	std::cout << "5 - Sort specialities taught by the teacher.\n";
-	std::cout << "0 - Return to previous menu. \n";
+	std::cout << "0 - Return to previous menu(if you initialized the database in any way). \n";
 	bool marker = 1;
 	while (marker) {
 		try {

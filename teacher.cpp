@@ -1,25 +1,25 @@
 #include "teacher.hpp"
+#pragma region Teacher
 Teacher::Teacher() {}
 Teacher::~Teacher() {}
-
 void Teacher::show() const{
-    std::cout << teacherName << " " << teacherPatronymic << " " << teacherSurname << " " << teacherSubject << " ";
+    std::cout << teacherName << " " << teacherPatronymic << " " << teacherSurname << " " << teacherSubject;
     for(int i = 0; i < specialities.getSpecialitiesSize(); i++){
-        std::cout << specialities[i] << " ";
+        std::cout << specialities[i];
     }
     std::cout << std::endl;
     for(int i = 0; i < audiences.getAudiencesSize(); i++){
-        std::cout << audiences[i] << " ";
+        std::cout << audiences[i];
     }
     std::cout << std::endl;
     for(int i = 0; i < groups.getGroupsSize(); i++){
-        std::cout << groups[i] << " ";
+        std::cout << groups[i];
     }
     std::cout << std::endl;
 }
-void Teacher::show(std::string filename) const{
+void Teacher::show(const std::string filename) const{
     std::ofstream out;
-    out.open(filename, std::ios::ate);
+    out.open(filename, std::ios::app);
     out << teacherName << std::endl;
     out << teacherPatronymic << std::endl;
     out << teacherSurname << std::endl;
@@ -29,43 +29,13 @@ void Teacher::show(std::string filename) const{
     groups.outGroups(out);
     out.close();
 }
-void Teacher::showName() const{
-    std::cout << teacherName << std::endl;
-}
-void Teacher::showPatronymic() const{
-    std::cout << teacherPatronymic << std::endl;
-}
-void Teacher::showSurname() const{
-    std::cout << teacherSurname << std::endl;
-}
-void Teacher::showSubject() const{
-    std::cout << teacherSubject << std::endl;
-}
-void Teacher::showSpecialities() const{
-    for(int i = 0; i < specialities.getSpecialitiesSize(); i++){
-        std::cout << specialities[i] << " ";
-    }
-    std::cout << std::endl;
-}
-void Teacher::showAudiences() const{
-    for(int i = 0; i < audiences.getAudiencesSize(); i++){
-        std::cout << audiences[i] << " ";
-    }
-    std::cout << std::endl;
-}
-void Teacher::showGroups() const{
-    for(int i = 0; i < groups.getGroupsSize(); i++){
-        std::cout << groups[i] << " ";
-    }
-    std::cout << std::endl;
-}
 void Teacher::sortSpecialities()
 {
-    for (int i = 0; i < specialities.getSpecialitiesSize() - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    for (int i = 0; i < specialities.getSpecialitiesSize() - 1; i++) 
     {
         for (int j = 0; j < specialities.getSpecialitiesSize() - i - 1; j++)
         {
-            if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+            if (specialities[j].get().compare(specialities[j + 1].get()) > 0) 
                 std::swap(specialities[j], specialities[j + 1]);
         }
     }
@@ -114,7 +84,7 @@ void Teacher::set(){
     groups.setGroups();
     std::cin.ignore();
 }
-void Teacher::set(std::string filename){
+void Teacher::set(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> teacherName;
@@ -141,7 +111,7 @@ void Teacher::setName(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
 }
-void Teacher::setName(std::string filename){
+void Teacher::setName(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> teacherName;
@@ -161,7 +131,7 @@ void Teacher::setPatronymic(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
 }
-void Teacher::setPatronymic(std::string filename){
+void Teacher::setPatronymic(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> teacherPatronymic;
@@ -181,7 +151,7 @@ void Teacher::setSurname(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
 }
-void Teacher::setSurname(std::string filename){
+void Teacher::setSurname(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> teacherSurname;
@@ -190,7 +160,7 @@ void Teacher::setSurname(std::string filename){
 void Teacher::setSubject(){
     std::cin >> teacherSubject;
 }
-void Teacher::setSubject(std::string filename){
+void Teacher::setSubject(const std::string filename){
     std::ifstream in;
     in.open(filename);
     in >> teacherSubject;
@@ -199,7 +169,7 @@ void Teacher::setSubject(std::string filename){
 void Teacher::setSpecialities(){
     specialities.setSpecialities();
 }
-void Teacher::setSpecialities(std::string filename){
+void Teacher::setSpecialities(const std::string filename){
     std::ifstream in;
     in.open(filename);
     specialities.setSpecialities(in);
@@ -208,7 +178,7 @@ void Teacher::setSpecialities(std::string filename){
 void Teacher::setAudiences(){
     audiences.setAudiences();
 }
-void Teacher::setAudiences(std::string filename){
+void Teacher::setAudiences(const std::string filename){
     std::ifstream in;
     in.open(filename);
     audiences.setAudiences(in);
@@ -217,25 +187,14 @@ void Teacher::setAudiences(std::string filename){
 void Teacher::setGroups(){
     groups.setGroups();
 }
-void Teacher::setGroups(std::string filename){
+void Teacher::setGroups(const std::string filename){
     std::ifstream in;
     in.open(filename);
     groups.setGroups(in);
     in.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+#pragma endregion
+#pragma region Teachers
 Teachers::Teachers(){}
 Teachers::Teachers(const int size){
     this->teachersSize = size;
@@ -255,7 +214,7 @@ void Teachers::setTeachers(){
     for (int i = 0; i < teachersSize; i++)
         teachers[i].set();
 }
-void Teachers::setTeachers(std::string filename){
+void Teachers::setTeachers(const std::string filename){
     for (int i = 0; i < teachersSize; i++)
         teachers[i].set(filename);
 }
@@ -263,7 +222,7 @@ void Teachers::outTeachers() const{
     for (int i = 0; i < teachersSize; i++)
         teachers[i].show();
 }
-void Teachers::outTeachers(std::string filename) const{
+void Teachers::outTeachers(const std::string filename) const{
     for (int i = 0; i < teachersSize; i++)
         teachers[i].show(filename);
 }
@@ -291,3 +250,4 @@ void Teachers::setTeachersSize(){
         }
     }
 }
+#pragma endregion

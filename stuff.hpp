@@ -3,25 +3,38 @@
 #include <string>
 #include <fstream>
 typedef unsigned int uint64;
-class TooMuchSymbols : std::exception {};
-class TooMuchDimension : std::exception {};
-struct Date{
-    uint64 day;
-    uint64 month;
-    uint64 year;
-};
+class TooMuchSymbols : std::exception {}; // класс-исключение для полей фио студента/учителя, срабатывает если больше 50 символов.
+class TooMuchDimension : std::exception {}; // класс-исключение на размеры массивов.
+#pragma region Group, Subject, Audience,Speciality
 #pragma region Group
 class Group{
 private:
     std::string groupName;
 public:
-    Group();
+	//конструктор
+    Group(); 
+	//деструктор
     ~Group();
-    void show();
-    std::string get();
+	//показывает название группы.
+	// входные и выходные данные:нет.
+    void show()const;
+	// возвращает название группы.
+    std::string get()const;
+	//перегруженный оператор вывода на консоль.
+	//входные данные:объект класса и поток вывода
+	//выходные данные: возвращает поток
     friend std::ostream & operator<<(std::ostream & out, const Group & group);
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::istream & operator >> (std::istream & in, Group & group);
+	//перегруженный оператор вывода в файл.
+	//входные данные:объект класса и поток вывода в файл
+	//выходные данные: возвращает поток
     friend std::ofstream & operator <<(std::ofstream & fout, const Group & group);
+	//перегруженный оператор ввода из файла.
+	//входные данные:объект класса и поток ввода из файла
+	//выходные данные: возвращает поток
     friend std::ifstream & operator >> (std::ifstream & fin, Group & group);
 };
 #pragma endregion
@@ -30,13 +43,30 @@ class Audience{
 private:
     uint64 audienceNumber;
 public:
-    Audience(); // ГЇГ®ГЇГ°Г®ГЇГЁГ±Г»ГўГ ГІГј ГЄГ ГЄГЁГҐ Г¬ГҐГІГ®Г¤Г» ГЄГ®Г­Г±ГІГ Г­ГІГ­Г»ГҐ
+	//конструктор
+    Audience(); 
+	//деструктор
     ~Audience();
-    void show();
-    uint64 get();
+	//показывает номер аудитории.
+	//входные и выходные данные:нет.
+    void show()const;
+	// возвращает номер аудитории.
+    uint64 get()const;
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::ostream & operator<<(std::ostream & out, const Audience & audience);
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::istream & operator >> (std::istream & in, Audience & audience);
+	//перегруженный оператор вывода в файл.
+	//входные данные:объект класса и поток вывода в файл
+	//выходные данные: возвращает поток
     friend std::ofstream & operator <<(std::ofstream & fout, const Audience & audience);
+	//перегруженный оператор ввода из файла.
+	//входные данные:объект класса и поток ввода из файла
+	//выходные данные: возвращает поток
     friend std::ifstream & operator >> (std::ifstream & fin, Audience & audience);
 };
 #pragma endregion
@@ -45,13 +75,30 @@ class Subject{
 private:
     std::string subjectName;
 public:
+	//конструктор
     Subject();
+	//деструктор
     ~Subject();
-    void show();
-    std::string get();
+	//показывает название предмета.
+	//входные и выходные данные:нет.
+    void show()const;
+	//возвращает название предмета.
+    std::string get()const ;
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::ostream & operator<<(std::ostream & out, const Subject & subject);
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::istream & operator >> (std::istream & in, Subject & subject);
+	//перегруженный оператор вывода в файл.
+	//входные данные:объект класса и поток вывода в файл
+	//выходные данные: возвращает поток
     friend std::ofstream & operator <<(std::ofstream & fout, const Subject & subject);
+	//перегруженный оператор ввода из файла.
+	//входные данные:объект класса и поток ввода из файла
+	//выходные данные: возвращает поток
     friend std::ifstream & operator >> (std::ifstream & fin, Subject & subject);
 };
 #pragma endregion
@@ -60,33 +107,61 @@ class Speciality{
 private:
     std::string specialityName;
 public:
+	//конструктор
     Speciality();
+	//деструктор
     ~Speciality();
-    void show();
-    std::string get();
+	//показывает название специальности.
+	//входные и выходные данные:нет.
+    void show()const;
+	//возвращает название специальности.
+    std::string get()const;
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::ostream & operator<<(std::ostream & out, const Speciality & speciality);
+	//перегруженный оператор ввода с консоли.
+	//входные данные:объект класса и поток ввода
+	//выходные данные: возвращает поток
     friend std::istream & operator >> (std::istream & in, Speciality & speciality);
+	//перегруженный оператор вывода в файл.
+	//входные данные:объект класса и поток вывода в файл
+	//выходные данные: возвращает поток
     friend std::ofstream & operator <<(std::ofstream & fout, const Speciality & speciality);
+	//перегруженный оператор ввода из файла.
+	//входные данные:объект класса и поток ввода из файла
+	//выходные данные: возвращает поток
     friend std::ifstream & operator >> (std::ifstream & fin, Speciality & speciality);
 };
 #pragma endregion
-
-
-
-
-// array classes
+#pragma endregion
+#pragma region Groups,Audiences,Subjects,Specialities
 #pragma region Groups
 class Groups{
 public:
+	// конструктор
     Groups();
+	//деструктор
     ~Groups();
-    void showGroups();
+	// выводит на консоль названия групп.
+    void showGroups() const;
+	// перегруженный оператор [].
+	// входные данные:индекс элемента
+	// выходные данные: объект типа Group.
     Group& operator [] (const int number) const;
-    void sortGroups();
+	// входные данные:нет
+	// выходные данные:размер массива
     int getGroupsSize() const;
+	// считываем с консоли размерность массива, выделяем память и заполняем его данными.
+	// входные и выходные данные: нет
     void setGroups();
+	// считываем из файла размерность массива, выделяем память и заполняем его данными.
+	// входные данные:файловый поток ввода
+	// выходные данные:нет
     void setGroups(std::ifstream & fin);
-    void outGroups();
+	// выводим в файл размерность массива, и его элементы.
+	// входные данные: файловый поток вывода
+	// выходные данные:нет
     void outGroups(std::ofstream & fout) const;
 private:
     Group *groups;
@@ -97,14 +172,29 @@ private:
 #pragma region Audiences
 class Audiences {
 public:
+	// конструктор
     Audiences();
+	//деструктор
     ~Audiences();
-    void showAudiences();
+	// выводит на консоль номера аудиторий.
+    void showAudiences() const;
+	// перегруженный оператор [].
+	// входные данные:индекс элемента
+	// выходные данные: объект типа Audience.
     Audience& operator [] (const int number) const;
+	// входные данные:нет
+	// выходные данные:размер массива
     int getAudiencesSize() const;
+	// считываем с консоли размерность массива, выделяем память и заполняем его данными.
+	// входные и выходные данные: нет
     void setAudiences();
+	// считываем из файла размерность массива, выделяем память и заполняем его данными.
+	// входные данные:файловый поток ввода
+	// выходные данные:нет
     void setAudiences(std::ifstream & fin);
-    void outAudiences();
+	// выводим в файл размерность массива, и его элементы.
+	// входные данные: файловый поток вывода
+	// выходные данные:нет
     void outAudiences(std::ofstream & fout) const;
 private:
     Audience *audiences;
@@ -114,15 +204,31 @@ private:
 #pragma region Subjects
 class Subjects {
 public:
+	// конструктор
     Subjects();
+	//деструктор
     ~Subjects();
-    void showSubjects();
+	// выводит на консоль названия предметов.
+    void showSubjects()const;
+	// перегруженный оператор [].
+	// входные данные:индекс элемента
+	// выходные данные: объект типа Subject.
     Subject& operator [] (const int number) const;
+	// функция сортирует предметы в алфавитном порядке с помощью пузырькового алгоритма и функции compare.
     void sortSubjects();
+	// входные данные:нет
+	// выходные данные:размер массива
     int getSubjectsSize() const;
+	// считываем с консоли размерность массива, выделяем память и заполняем его данными.
+	// входные и выходные данные: нет
     void setSubjects();
+	// считываем из файла размерность массива, выделяем память и заполняем его данными.
+	// входные данные:файловый поток ввода
+	// выходные данные:нет
     void setSubjects(std::ifstream & fin);
-    void outSubjects();
+	// выводим в файл размерность массива, и его элементы.
+	// входные данные: файловый поток вывода
+	// выходные данные:нет
     void outSubjects(std::ofstream & fout) const;
 private:
     Subject *subjects;
@@ -132,17 +238,35 @@ private:
 #pragma region Specialities
 class Specialities {
 public:
+	// конструктор
     Specialities();
+	//деструктор
     ~Specialities();
-    void showSpecialities();
+	// выводит на консоль названия специальностей.
+    void showSpecialities() const;
+	// перегруженный оператор [].
+	// входные данные:индекс элемента
+	// выходные данные: объект типа Speciality.
     Speciality& operator [] (const int number) const;
+	// считываем с консоли размерность массива, выделяем память и заполняем его данными.
+	// входные и выходные данные: нет
     void setSpecialities();
+	// считываем из файла размерность массива, выделяем память и заполняем его данными.
+	// входные данные:файловый поток ввода
+	// выходные данные:нет
     void setSpecialities(std::ifstream & fin);
-    void outSpecialities();
+	// выводим в файл размерность массива, и его элементы.
+	// входные данные: файловый поток вывода
+	// выходные данные:нет
     void outSpecialities(std::ofstream & fout) const;
+	// функция сортирует специальности в алфавитном порядке с помощью пузырькового алгоритма и функции compare.
     void sortSpecialities();
+	// входные данные:нет
+	// выходные данные:размер массива
     int getSpecialitiesSize() const;
 private:
     Speciality *specialities;
     int specialitiesSize;
 };
+#pragma endregion
+#pragma endregion

@@ -1,5 +1,5 @@
 #include "stuff.hpp"
-
+#pragma region Group,Audience,Subject,Speciality
 #pragma region Group
 Group::Group()
 {
@@ -10,12 +10,12 @@ Group::~Group()
 {
 }
 
-void Group::show()
+void Group::show() const
 {
     std::cout << "Group name is " << groupName << std::endl;
 }
 
-std::string Group::get()
+std::string Group::get() const
 {
     return groupName;
 }
@@ -53,12 +53,12 @@ Audience::~Audience()
 {
 }
 
-void Audience::show()
+void Audience::show() const
 {
     std::cout << "Audience number is " << audienceNumber << std::endl;
 }
 
-uint64 Audience::get()
+uint64 Audience::get()const
 {
     return audienceNumber;
 }
@@ -97,11 +97,11 @@ Subject::~Subject()
 {
 }
 
-void Subject::show()
+void Subject::show()const
 {
     std::cout << "Subject's name is " << subjectName << std::endl;
 }
-std::string Subject::get()
+std::string Subject::get()const
 {
     return subjectName;
 }
@@ -138,12 +138,12 @@ Speciality::~Speciality()
 {
 }
 
-void Speciality::show()
+void Speciality::show()const
 {
     std::cout << "Specialities name is " << specialityName << std::endl;
 }
 
-std::string Speciality::get()
+std::string Speciality::get()const
 {
     return specialityName;
 }
@@ -168,7 +168,8 @@ std::ifstream & operator >> (std::ifstream & fin, Speciality & speciality)
     return fin;
 }
 #pragma endregion
-// jopa
+#pragma endregion
+#pragma region Groups,Audiences,Subjects,Specialities
 #pragma region Groups
 Groups::Groups()
 {
@@ -178,28 +179,16 @@ Groups::~Groups()
     delete[] groups;
 }
 
-void Groups::showGroups()
+void Groups::showGroups()const
 {
     for (int i = 0; i < groupsSize; i++)
         groups[i].show();
+	std::cout << std::endl;
 }
 
 Group & Groups::operator[](int number) const
 {
     return groups[number];
-}
-
-void Groups::sortGroups()
-{
-    for (int i = 0; i < groupsSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
-    {
-        for (int j = 0; j < groupsSize - i - 1; j++)
-        {
-            if (groups[j].get().compare(groups[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
-                std::swap(groups[j], groups[j + 1]);
-        }
-    }
-
 }
 int Groups::getGroupsSize() const
 {
@@ -222,11 +211,6 @@ void Groups::setGroups(std::ifstream & fin)
     for (int i = 0; i < groupsSize; i++)
         fin >> groups[i];
 }
-void Groups::outGroups()
-{
-    for (int i = 0; i < groupsSize; i++)
-        std::cout << groups[i];
-}
 void Groups::outGroups(std::ofstream & fout) const
 {
 	fout << groupsSize << std::endl;
@@ -244,10 +228,11 @@ Audiences::~Audiences()
 	delete[] audiences;
 }
 
-void Audiences::showAudiences()
+void Audiences::showAudiences()const
 {
     for (int i = 0; i < audiencesSize; i++)
         audiences[i].show();
+	std::cout << std::endl;
 }
 
 Audience & Audiences::operator[](const int number) const
@@ -276,11 +261,6 @@ void Audiences::setAudiences(std::ifstream & fin)
     for (int i = 0; i < audiencesSize; i++)
         fin >> audiences[i];
 }
-void Audiences::outAudiences()
-{
-    for (int i = 0; i < audiencesSize; i++)
-        std::cout << audiences[i];
-}
 void Audiences::outAudiences(std::ofstream & fout) const
 {
 	fout << audiencesSize << std::endl;
@@ -300,10 +280,11 @@ Subjects::~Subjects()
     delete[] subjects;
 }
 
-void Subjects::showSubjects()
+void Subjects::showSubjects()const
 {
     for (int i = 0; i < subjectsSize; i++)
         subjects[i].show();
+	std::cout << std::endl;
 }
 
 Subject & Subjects::operator[](const int number) const
@@ -313,11 +294,11 @@ Subject & Subjects::operator[](const int number) const
 
 void Subjects::sortSubjects()
 {
-    for (int i = 0; i < subjectsSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    for (int i = 0; i < subjectsSize - 1; i++) 
     {
         for (int j = 0; j < subjectsSize - i - 1; j++)
         {
-            if (subjects[j].get().compare(subjects[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+            if (subjects[j].get().compare(subjects[j + 1].get()) > 0) 
                 std::swap(subjects[j], subjects[j + 1]);
         }
     }
@@ -344,11 +325,6 @@ void Subjects::setSubjects(std::ifstream & fin)
     for (int i = 0; i < subjectsSize; i++)
         fin >> subjects[i];
 }
-void Subjects::outSubjects()
-{
-    for (int i = 0; i < subjectsSize; i++)
-        std::cout << subjects[i];
-}
 void Subjects::outSubjects(std::ofstream & fout) const
 {
 	fout << subjectsSize << std::endl;
@@ -367,10 +343,11 @@ Specialities::~Specialities()
     delete[] specialities;
 }
 
-void Specialities::showSpecialities()
+void Specialities::showSpecialities()const
 {
     for (int i = 0; i < specialitiesSize; i++)
         specialities[i].show();
+	std::cout << std::endl;
 }
 
 Speciality & Specialities::operator[](const int number) const
@@ -396,13 +373,6 @@ void Specialities::setSpecialities(std::ifstream & fin)
     for (int i = 0; i < specialitiesSize; i++)
         fin >> specialities[i];
 }
-
-void Specialities::outSpecialities()
-{
-    for (int i = 0; i < specialitiesSize; i++)
-        std::cout << specialities[i];
-}
-
 void Specialities::outSpecialities(std::ofstream & fout) const
 {
 	fout << specialitiesSize << std::endl;
@@ -413,11 +383,11 @@ void Specialities::outSpecialities(std::ofstream & fout) const
 
 void Specialities::sortSpecialities()
 {
-    for (int i = 0; i < specialitiesSize - 1; i++) // ôóíêöèÿ ñîðòèðîâêè ïî àëôàâèòó(ïóçûðüêîâûé ìåòîä)
+    for (int i = 0; i < specialitiesSize - 1; i++) 
     {
         for (int j = 0; j < specialitiesSize - i - 1; j++)
         {
-            if (specialities[j].get().compare(specialities[j + 1].get()) > 0) // compare - ñðàâíèâàåò ëåêñèêîãðàôè÷åñêè ñòðîêè
+            if (specialities[j].get().compare(specialities[j + 1].get()) > 0) 
                 std::swap(specialities[j], specialities[j + 1]);
         }
     }
@@ -427,4 +397,5 @@ int Specialities::getSpecialitiesSize() const
 {
     return specialitiesSize;
 }
+#pragma endregion
 #pragma endregion

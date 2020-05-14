@@ -1,0 +1,12 @@
+size of array
+name
+surname
+group's name
+-space-
+specialities name
+-space-
+quantity of subjects
+array of subjects
+-space-
+quantity of audiences
+array of audiences
