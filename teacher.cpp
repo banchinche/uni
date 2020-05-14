@@ -19,7 +19,7 @@ void Teacher::show() const{
 }
 void Teacher::show(std::string filename) const{
     std::ofstream out;
-    out.open(filename);
+    out.open(filename, std::ios::ate);
     out << teacherName << std::endl;
     out << teacherPatronymic << std::endl;
     out << teacherSurname << std::endl;
