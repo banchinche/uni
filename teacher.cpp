@@ -106,8 +106,11 @@ void Teacher::set(){
         catch(TooMuchSymbols){ std::cerr << "Too much symbols.\n";}
     }
     std::cin >> teacherSubject;
+	std::cout << "Enter the specialities that the teacher's teaching" << std::endl;
    this->specialities.setSpecialities();
+   std::cout << " Enter the auditories in which the teacher conducts classes" << std::endl;
     audiences.setAudiences();
+	std::cout << "Enter the groups that the teacher's teaching" << std::endl;
     groups.setGroups();
     std::cin.ignore();
 }

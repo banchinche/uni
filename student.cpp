@@ -84,7 +84,9 @@ void Student::set(){
     }
     std::cin >> studentGroup;
     std::cin >> studentSpeciality;
+	std::cout << "Enter the subjects that the student's studying" << std::endl;
     subjects.setSubjects();
+	std::cout << "Enter the auditories in which the student takes classes" << std::endl;
     audiences.setAudiences();
     std::cin.ignore();
 }

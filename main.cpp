@@ -75,6 +75,7 @@ int main(int argc, const char * argv[]) {
 			while (marker2) {
 				switch (menuStudent()) {
 				case 1:
+					std::cin.ignore();
 					students.setStudents();
 					system("cls");
 					break;
@@ -288,7 +289,7 @@ uint64 menuStudent()
 	std::cout << "2 - Read data  from file.\n";
 	std::cout << "3 - Show data  to console.\n";
 	std::cout << "4 - Write data to file.\n";
-	std::cout << "5 - Sort subjects to alphabet.\n";
+	std::cout << "5 - Sort student's subjects.\n";
 	std::cout << "0 - Return to previous menu. \n";
 	bool marker = 1;
 	while (marker) {
@@ -311,7 +312,7 @@ uint64 menuTeacher() {
 	std::cout << "2 - Read data  from file.\n";
 	std::cout << "3 - Show data  to console.\n";
 	std::cout << "4 - Write data to file.\n";
-	std::cout << "5 - Sort specialities to alphabet.\n";
+	std::cout << "5 - Sort specialities taught by the teacher.\n";
 	std::cout << "0 - Return to previous menu. \n";
 	bool marker = 1;
 	while (marker) {
